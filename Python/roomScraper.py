@@ -1,6 +1,7 @@
 # data/94920teal0025.xls
 import xlrd
 import os
+from roomClass import room
 
 filename = 'data/94920teal0025.xls' 
 
