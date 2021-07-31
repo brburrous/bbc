@@ -1,8 +1,12 @@
 # data/94920teal0025.xls
 import xlrd
 from roomClass import room
+import re
+
+p = re.compile(r'(^\s*"\s+"|^\s*")')
 
 def extractRoomsData(sheet):
+    print('baaaaar')
     # Check to ensure sheet is properly structured
     if sheet.cell(17, 3).value == 'CARPETS AND RUGS':
         roomsList = list() # Create new list to store all rooms
@@ -24,6 +28,10 @@ def extractRoomsData(sheet):
                 roomInstance.furnitureCode = sheet.cell(i, 8).value
                 roomInstance.protectionCode = sheet.cell(i, 9).value
 
+                if p.match(roomInstance.name):
+                    roomInstance.name = p.sub(roomsList[-1].name, roomInstance.name)
+                    print('fooooooo')
+
                 # Add roomInstance object of type 'room'
                 roomsList.append(roomInstance)
 
@@ -35,6 +43,18 @@ def extractRoomsData(sheet):
 
     return roomsList
 
+
+def cellType(sheet, row):
+    # check if there is a number in the length column
+    if (sheet.cell(row, 4).ctype == 2): 
+        # do a thing
+        print("hello")
+    # check if there is a moving fee
+    elif (sheet.cell(row, 11) == 2):
+        # do another thing
+        print("Hello")
+    # If other conditions fail, cell is a note
+    else
 
 
 
