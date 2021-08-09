@@ -24,7 +24,7 @@ files = list()
 for entry in os.scandir(directory):
     if entry.path.endswith('.xls') and entry.is_file():
         files.append(entry)
-# bar = FillingSquaresBar('Countdown', max = len(files))
+bar = FillingSquaresBar('Countdown', max = len(files))
 
 
 
@@ -53,7 +53,7 @@ for file in files:
     try: 
         book = xlrd.open_workbook(file)
         sheet = book.sheet_by_index(1)
-
+  
         if sheet.cell(17, 3).value == 'CARPETS AND RUGS' and sheet.ncols == 14:
             i = 18
             # i = 18 # Row index of first room
@@ -69,15 +69,17 @@ for file in files:
             #                 input("Press Enter to continue...")
 
             i = i + 1
-            
+ 
     except:
         print(file)
         book = xlrd.open_workbook(file)
         sheet = book.sheet_by_index(1)
         print(sheet.nrows)
-    #bar.next()
-    
+    #BAR.NEXT()
+ 
 # print("Number of strings matching pattern: {}".format(len(notesList)))
 # print(codesSet)
 #bar.finish()
 
+/
+ar
