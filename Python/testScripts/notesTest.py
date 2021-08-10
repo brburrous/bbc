@@ -3,32 +3,10 @@ import xlrd
 from progress.bar import FillingSquaresBar
 import pyperclip
 from icecream import ic
+from helperFuncs import *
 
-
-
-from tkinter import Tk, filedialog
-root = Tk() # pointing root to Tk() to use it as Tk() in program.
-root.withdraw() # Hides small tkinter window.
-
-root.attributes('-topmost', True) # Opened windows will be active. above all windows despite of selection.
-
-directory = filedialog.askdirectory(initialdir='/Users/brian/Developer') # Returns opened path as str
-print(directory)
-
-
-
-
-
-files = list()
-
-for entry in os.scandir(directory):
-    if entry.path.endswith('.xls') and entry.is_file():
-        files.append(entry)
-bar = FillingSquaresBar('Countdown', max = len(files))
-
-
-
-
+directory = getDirectory()
+files = getFiles(directory)
 
 
 

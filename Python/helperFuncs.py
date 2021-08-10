@@ -47,3 +47,12 @@ def  str2tup(cellIndex):
     row = int(cellIndex[1:]) - 1
     return (row, col)
 
+
+def ensureFormat(sheet):
+    if cellV(sheet, 'D17') == 'Description of Services':
+        return True
+    return False
+
+
+def cellV(sheet, cell):
+    return sheet.cell(*str2tup(cell)).value

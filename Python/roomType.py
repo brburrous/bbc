@@ -10,18 +10,22 @@ def IsANote(sheet, row):
     return tot == 0
 
 def isStairs(sheet, row):
-        lwSlice = sheet.row_slice(row, 4, 6)
-        tot = 0
-        for cell in slice:
-            if cell.value != 0:
-                tot += cell.ctype
-        if tot != 0:
-            return False    
-        return
+	lwSlice = sheet.row_slice(row, 4, 6)
+	area = sheet.cell(row, 6)
+	tot = 0
+	for cell in slice:
+		if cell.value != 0:
+			tot += cell.ctype
+	if tot != 0:
+		return False    
+	return (area.ctype != 0 and area.value != 0)
 
-import re
 
-def inconsistentStairs():
-        p = re.compile('.*[sS][tT]')
-        cCodecell = sheet.cell(row, 7)
-        if p.match(cCodeCell):
+def inconsistentStairs(sheet, row):
+	if isStairs(sheet, row):
+		import re
+		p = re.compile('.*[sS][tT]')
+		cCodeCell = sheet.cell(row, 7)
+		if not p.match(cCodeCell):
+			return True
+	return False
