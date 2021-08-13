@@ -13,7 +13,7 @@ def isStairs(sheet, row):
 	lwSlice = sheet.row_slice(row, 4, 6)
 	area = sheet.cell(row, 6)
 	tot = 0
-	for cell in slice:
+	for cell in lwSlice:
 		if cell.value != 0:
 			tot += cell.ctype
 	if tot != 0:
@@ -24,8 +24,8 @@ def isStairs(sheet, row):
 def inconsistentStairs(sheet, row):
 	if isStairs(sheet, row):
 		import re
-		p = re.compile('.*[sS][tT]')
-		cCodeCell = sheet.cell(row, 7)
-		if not p.match(cCodeCell):
+		p1 = re.compile(r".*[sS][tT]|.*[bB][bB]")
+		cCodeCell = sheet.cell(row, 7).value
+		if not p1.match(cCodeCell):
 			return True
 	return False

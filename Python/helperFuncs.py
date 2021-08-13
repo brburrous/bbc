@@ -6,9 +6,12 @@ def getDirectory():
 
     root.attributes('-topmost', True) # Opened windows will be active. above all windows despite of selection.
 
-    directory = filedialog.askdirectory() # Returns opened path as str
+    directory = filedialog.askdirectory(initialdir='~/Developer/BBC Residences') # Returns opened path as str
 
     return directory
+
+
+
 
 def getFiles(directory):
     import os
@@ -18,6 +21,9 @@ def getFiles(directory):
                     or entry.path.endswith('.xlsx')) and entry.is_file():
                 files.append(entry)
     return files
+
+
+
 
 def getBlock(sheet, cellStart, cellEnd, offset=0):
     block = list()
@@ -35,6 +41,9 @@ def getBlock(sheet, cellStart, cellEnd, offset=0):
     blockStr = blockStr.strip()
     return blockStr
 
+
+
+
 # Convert excel cell index (ex: 'B12') to zero indexed tupple (row, col)
 # str2tup('A12') -> (11, 0)
 def  str2tup(cellIndex):
@@ -46,6 +55,9 @@ def  str2tup(cellIndex):
         col = ord(let) - ord('a')
     row = int(cellIndex[1:]) - 1
     return (row, col)
+
+
+
 
 
 def ensureFormat(sheet):
